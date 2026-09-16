@@ -1,0 +1,58 @@
+{
+  "name": "@pairkit/core",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT-0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./src/index.ts",
+  "react-native": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "react-native": "./src/index.ts",
+      "development": "./src/index.ts",
+      "production": "./src/index.ts",
+      "node": "./dist/index.js",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./api": {
+      "types": "./src/api/index.ts",
+      "react-native": "./src/api/index.ts",
+      "development": "./src/api/index.ts",
+      "production": "./src/api/index.ts",
+      "node": "./dist/api/index.js",
+      "import": "./dist/api/index.js",
+      "default": "./dist/api/index.js"
+    },
+    "./client": {
+      "types": "./src/client/index.ts",
+      "react-native": "./src/client/index.ts",
+      "development": "./src/client/index.ts",
+      "production": "./src/client/index.ts",
+      "node": "./dist/client/index.js",
+      "import": "./dist/client/index.js",
+      "default": "./dist/client/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "test:ci": "vitest run"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.2",
+    "vitest": "^4.1.10"
+  }
+}

@@ -1,0 +1,80 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Workspace {
+  id              String   @id @default(uuid())
+  recoveryKeyHash String   @unique
+  lastUsedAt      DateTime @default(now())
+  createdAt       DateTime @default(now())
+
+  devices       Device[]
+  refreshTokens RefreshToken[]
+  pairingCodes  PairingCode[]
+  items         Item[]
+}
+
+model Device {
+  id          String    @id @default(uuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  name        String?
+  createdAt   DateTime  @default(now())
+  revokedAt   DateTime?
+
+  refreshTokens RefreshToken[]
+
+  @@index([workspaceId])
+  @@index([revokedAt])
+}
+
+model RefreshToken {
+  id          String    @id @default(uuid())
+  tokenHash   String    @unique
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  deviceId    String
+  device      Device    @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  expiresAt   DateTime
+  createdAt   DateTime  @default(now())
+  revokedAt   DateTime?
+
+  @@index([workspaceId])
+  @@index([deviceId])
+  @@index([expiresAt])
+}
+
+model PairingCode {
+  id          String    @id @default(uuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  codeHash    String    @unique
+  expiresAt   DateTime
+  usedAt      DateTime?
+  createdAt   DateTime  @default(now())
+
+  @@index([workspaceId])
+  @@index([expiresAt])
+}
+
+/// Demo entity for workspace item-sync. `id` is client-generated.
+model Item {
+  id          String    @id
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  title       String
+  body        String    @default("")
+  deletedAt   DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([workspaceId])
+  @@index([workspaceId, updatedAt])
+  @@index([deletedAt])
+}

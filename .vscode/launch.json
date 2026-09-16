@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug backend",
+      "preLaunchTask": "backend: build",
+      "program": "${workspaceFolder}/backend/dist/server.js",
+      "cwd": "${workspaceFolder}/backend",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "runtimeArgs": ["--enable-source-maps"],
+      "outFiles": ["${workspaceFolder}/backend/dist/**/*.js"],
+      "sourceMaps": true,
+      "resolveSourceMapLocations": null,
+      "sourceMapPathOverrides": {
+        "../src/*": "${workspaceFolder}/backend/src/*"
+      },
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**", "**/node_modules/**"]
+    }
+  ]
+}

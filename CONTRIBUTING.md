@@ -1,0 +1,37 @@
+# Contributing
+
+Thanks for improving Pairkit as a starting point (clearer defaults, tests, docs).
+
+## Setup
+
+1. Fork and clone.
+2. `pnpm install`
+3. `pnpm dev:backend` (env file, Postgres, migrations, API). Docker must be installed and running.
+4. In another terminal: `pnpm typecheck && pnpm test`
+
+`pnpm test` enforces 70% coverage on workspace auth (`features/user/services`), middleware, and
+token hashing.
+
+## Checks
+
+| When           | What                                                                                  |
+| -------------- | ------------------------------------------------------------------------------------- |
+| Commit         | Husky `lint-staged`: Prettier on docs/config, ESLint+Prettier on staged package files |
+| Push           | Husky `pnpm typecheck && pnpm test`                                                   |
+| PR into `main` | Jobs `verify` and `secrets` must be green. A GitHub ruleset blocks direct pushes.     |
+
+Tests that need Postgres skip if Compose is not up; CI still runs the full suite including those
+HTTP specs. Lint, format, and builds stay in Actions, not in `git commit` or `pnpm build`.
+
+Work on a branch, open a PR, wait for `verify` and `secrets`, then merge. A solo maintainer can
+merge without a second reviewer; the required checks are CI, not a human approval.
+
+## Conventions
+
+- New API features live under `backend/src/features/<name>/`.
+- Shared request/response shapes belong in `@pairkit/core/api` (Zod).
+- Shared workspace HTTP, item/tombstone storage, and `createPairkitClient` belong in
+  `@pairkit/core/client`. Web and mobile should only supply KV + session persistence.
+- Workspace handlers always return `{ success, message, data }`.
+- New env vars go in `backend/src/config/env-schema.ts` and `backend/.env.example` together.
+- Do not commit secrets. `Pairkit` is the only brand token — keep it searchable.

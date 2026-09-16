@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Pairkit",
+    "slug": "pairkit",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "pairkit",
+    "userInterfaceStyle": "dark",
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#242A28"
+    },
+    "ios": {
+      "icon": "./assets/images/icon.png",
+      "bundleIdentifier": "com.example.pairkit",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#242A28",
+        "foregroundImage": "./assets/images/icon.png"
+      },
+      "package": "com.example.pairkit"
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/icon.png"
+    },
+    "plugins": ["expo-router", "expo-secure-store", "expo-splash-screen"],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}

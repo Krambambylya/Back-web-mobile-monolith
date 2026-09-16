@@ -1,0 +1,14 @@
+node_modules
+dist
+build
+coverage
+out
+.next
+.expo
+pnpm-lock.yaml
+backend/src/generated
+mobile/ios
+mobile/android
+*.tsbuildinfo
+PLAN.md
+.cursor

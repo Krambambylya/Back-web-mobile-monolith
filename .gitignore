@@ -1,0 +1,83 @@
+# =============================================================================
+# Root .gitignore — monorepo (backend / web / mobile)
+# =============================================================================
+
+# --- OS / IDE ---
+.DS_Store
+Thumbs.db
+.idea/
+.history/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# --- Dependencies ---
+node_modules/
+.pnpm-store/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# --- Env / secrets ---
+.env
+.env.*
+!.env.example
+.secrets
+*.pem
+
+# --- Logs / debug ---
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+.pnpm-debug.log*
+testem.log
+*.tsbuildinfo
+
+# --- Shared build / test outputs ---
+dist/
+build/
+coverage/
+out/
+.turbo/
+
+# =============================================================================
+# backend
+# =============================================================================
+backend/src/generated/
+backend/src/logs/
+
+# =============================================================================
+# web (Next.js)
+# =============================================================================
+web/.next/
+web/out/
+web/.vercel/
+web/next-env.d.ts
+
+# =============================================================================
+# mobile (Expo / React Native)
+# =============================================================================
+mobile/.expo/
+mobile/ios/
+mobile/android/
+mobile/web-build/
+mobile/expo-env.d.ts
+mobile/.kotlin/
+mobile/.metro-health-check*
+
+# Working notes for extracting this starter — not part of the public tree
+PLAN.md
+
+# Native signing / credentials
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision

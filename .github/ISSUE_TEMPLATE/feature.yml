@@ -1,0 +1,18 @@
+name: Feature
+description: Improve Pairkit as a starter
+title: '[feat] '
+labels: ['enhancement']
+body:
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+      description: What problem this solves for people cloning the template.
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: Proposal
+    validations:
+      required: true

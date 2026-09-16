@@ -1,0 +1,18 @@
+export const RATE_LIMIT = {
+  GLOBAL_WINDOW_MS: 15 * 60 * 1000,
+  GLOBAL_MAX: 100,
+  AUTH_WINDOW_MS: 15 * 60 * 1000,
+  AUTH_MAX: 10,
+};
+
+export const DEFAULT_ACCESS_TOKEN_EXPIRES_IN = '15m';
+
+export const DEFAULT_REFRESH_TOKEN_EXPIRES_IN = '30d';
+
+export const PAIRING_CODE_EXPIRES_IN = '5m';
+
+export const REFRESH_TOKEN_EXPIRES_IN = '30d';
+
+export const MAX_ITEMS_PER_WORKSPACE = 150;
+
+export const ITEMS_JSON_BODY_LIMIT = '2mb';

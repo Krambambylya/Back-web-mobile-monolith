@@ -1,0 +1,26 @@
+packages:
+  - 'core-modules'
+  - 'web'
+  - 'mobile'
+  - 'backend'
+
+overrides:
+  react: '19.2.0'
+  react-dom: '19.2.0'
+
+# Packages allowed to run install/build scripts (pnpm blocks them by default).
+# `allowBuilds` is the pnpm 11 name; `onlyBuiltDependencies` is kept for pnpm 10,
+# which is what Vercel/Render pick from `lockfileVersion: 9.0` without Corepack.
+onlyBuiltDependencies:
+  - '@prisma/engines'
+  - esbuild
+  - prisma
+  - protobufjs
+  - unrs-resolver
+
+allowBuilds:
+  '@prisma/engines': true
+  esbuild: true
+  prisma: true
+  protobufjs: true
+  unrs-resolver: true

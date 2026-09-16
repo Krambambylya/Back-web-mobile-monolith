@@ -1,0 +1,9 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./backend" },
+    { "path": "./web" },
+    { "path": "./mobile" },
+    { "path": "./core-modules" }
+  ]
+}

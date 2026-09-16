@@ -1,0 +1,32 @@
+{
+  "name": "pairkit",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT-0",
+  "packageManager": "pnpm@11.15.1",
+  "engines": {
+    "node": ">=22.21.1"
+  },
+  "scripts": {
+    "prepare": "husky",
+    "dev:web": "pnpm --filter web dev",
+    "dev:mobile": "pnpm --filter mobile start",
+    "dev:backend": "bash scripts/dev-backend.sh",
+    "build:web": "pnpm --filter web build",
+    "build:backend": "pnpm --filter backend build",
+    "build:core": "pnpm --filter @pairkit/core build",
+    "test": "pnpm -r --if-present test:ci",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "lint": "pnpm -r --if-present lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.9.5"
+  },
+  "lint-staged": {
+    "*.{json,md,yml,yaml}": "prettier --write"
+  }
+}

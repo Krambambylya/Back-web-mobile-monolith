@@ -1,0 +1,15 @@
+# Fast local gate: format/lint staged files only. Typecheck and tests live in CI.
+pnpm exec lint-staged
+
+if git diff --cached --name-only -- backend | grep -q '\.ts$'; then
+  pnpm exec lint-staged --cwd backend
+fi
+if git diff --cached --name-only -- web | grep -qE '\.(ts|tsx|mjs|css)$'; then
+  pnpm exec lint-staged --cwd web
+fi
+if git diff --cached --name-only -- mobile | grep -qE '\.(ts|tsx|js)$'; then
+  pnpm exec lint-staged --cwd mobile
+fi
+if git diff --cached --name-only -- core-modules | grep -q '\.ts$'; then
+  pnpm exec lint-staged --cwd core-modules
+fi

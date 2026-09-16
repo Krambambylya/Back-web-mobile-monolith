@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "customConditions": ["development"],
+    "paths": {
+      "@/*": ["./src/*"],
+      "helmet": ["./node_modules/helmet/index.d.mts"],
+      "uni-response": ["./node_modules/uni-response/dist/index.d.mts"]
+    },
+    "types": ["node"],
+    "typeRoots": ["./node_modules/@types"],
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "removeComments": true
+  },
+  "include": ["src/**/*", "vitest.setup.ts"],
+  "exclude": ["node_modules", "dist", "coverage", "src/generated"]
+}

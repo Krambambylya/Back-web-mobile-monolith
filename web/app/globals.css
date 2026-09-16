@@ -1,0 +1,125 @@
+@import 'tailwindcss';
+
+:root {
+  --color-primary: #5ba882;
+  --color-primary-pressed: #4a9074;
+  --color-primary-muted: rgba(91, 168, 130, 0.18);
+  --color-on-primary: #ffffff;
+
+  --color-secondary: #6fbe9a;
+  --color-on-secondary: #ffffff;
+
+  --color-background: #242a28;
+  --color-surface: #2c3431;
+  --color-surface-2: #353e3a;
+  --color-surface-3: #3e4844;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-strong: rgba(255, 255, 255, 0.16);
+  --color-foreground: #f0f2f1;
+  --color-muted: #a8b0ac;
+  --color-muted-2: #7e8884;
+
+  --color-destructive: #d45656;
+  --color-ring: #5ba882;
+
+  --color-ink: #f0f2f1;
+  --color-deep: #1c2422;
+  --color-accent-soft: #c5ddd2;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.28);
+  --header-h: 4rem;
+}
+
+@theme inline {
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-primary: var(--color-primary);
+  --color-primary-pressed: var(--color-primary-pressed);
+  --color-primary-muted: var(--color-primary-muted);
+  --color-on-primary: var(--color-on-primary);
+  --color-secondary: var(--color-secondary);
+  --color-surface: var(--color-surface);
+  --color-surface-2: var(--color-surface-2);
+  --color-surface-3: var(--color-surface-3);
+  --color-muted: var(--color-muted);
+  --color-muted-2: var(--color-muted-2);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+  --color-destructive: var(--color-destructive);
+  --color-ring: var(--color-ring);
+  --color-ink: var(--color-ink);
+  --color-deep: var(--color-deep);
+  --color-accent-soft: var(--color-accent-soft);
+  --font-sans: var(--font-onest);
+  --font-display: var(--font-unbounded);
+  --font-mono: var(--font-plex-mono);
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  background-image:
+    radial-gradient(ellipse at 40% 28%, rgba(91, 168, 130, 0.28), transparent 58%),
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size:
+    auto,
+    48px 48px,
+    48px 48px;
+  background-attachment: fixed;
+  color: var(--color-foreground);
+  font-family: var(--font-onest), system-ui, sans-serif;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-primary) 40%, transparent);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+@keyframes pk-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.pk-pulse {
+  animation: pk-pulse 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .pk-pulse {
+    animation: none !important;
+  }
+}
+
+@media (min-width: 640px) {
+  :root {
+    --header-h: 5rem;
+  }
+}

@@ -1,0 +1,3 @@
+# Fail the push if types or unit tests break. Postgres HTTP specs skip when the DB is down.
+echo "husky: pnpm typecheck && pnpm test"
+pnpm typecheck && pnpm test

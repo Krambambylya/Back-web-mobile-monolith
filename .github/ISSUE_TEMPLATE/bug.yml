@@ -1,0 +1,19 @@
+name: Bug
+description: Something is broken in the starter
+title: '[bug] '
+labels: ['bug']
+body:
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: What you did, what you expected, what happened.
+    validations:
+      required: true
+  - type: input
+    id: package
+    attributes:
+      label: Package
+      placeholder: backend / web / mobile / core-modules
+    validations:
+      required: true
