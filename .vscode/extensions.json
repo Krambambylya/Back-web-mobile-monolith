@@ -1,3 +1,8 @@
 {
-  "recommendations": ["Prisma.prisma", "esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
+  "recommendations": [
+    "Prisma.prisma",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "expo.vscode-expo-tools"
+  ]
 }

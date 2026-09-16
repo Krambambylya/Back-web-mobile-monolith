@@ -29,7 +29,7 @@
       "output": "static",
       "favicon": "./assets/images/icon.png"
     },
-    "plugins": ["expo-router", "expo-secure-store", "expo-splash-screen"],
+    "plugins": ["expo-router", "expo-secure-store", "expo-splash-screen", "expo-font"],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true

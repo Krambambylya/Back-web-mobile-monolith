@@ -1,0 +1,32 @@
+{
+  "name": "Pairkit",
+  "image": "mcr.microsoft.com/devcontainers/base:bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22.21.1",
+      "installYarn": false,
+      "pnpmVersion": "11.15.1"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "forwardPorts": [3000, 4000, 5432, 8081],
+  "portsAttributes": {
+    "3000": { "label": "web" },
+    "4000": { "label": "api" },
+    "5432": { "label": "postgres" },
+    "8081": { "label": "metro" }
+  },
+  "postCreateCommand": "corepack enable && corepack prepare pnpm@11.15.1 --activate && pnpm install",
+  "postStartCommand": "docker compose up -d",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Prisma.prisma",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "expo.vscode-expo-tools"
+      ]
+    }
+  }
+}
