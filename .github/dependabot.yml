@@ -42,6 +42,10 @@ updates:
       # Expo doctor requires typescript ~5.9.2
       - dependency-name: 'typescript'
         update-types: ['version-update:semver-major']
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'eslint-plugin-unicorn'
+        update-types: ['version-update:semver-major']
       - dependency-name: 'vitest'
         update-types: ['version-update:semver-major']
       - dependency-name: '@vitest/coverage-v8'
