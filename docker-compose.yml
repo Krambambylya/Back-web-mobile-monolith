@@ -16,5 +16,24 @@ services:
       timeout: 5s
       retries: 10
 
+  api:
+    profiles: ['api']
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - '4000:4000'
+    environment:
+      NODE_ENV: production
+      PORT: '4000'
+      LOG_LEVEL: info
+      DATABASE_URL: postgresql://pairkit:pairkit@postgres:5432/pairkit
+      DIRECT_URL: postgresql://pairkit:pairkit@postgres:5432/pairkit
+      JWT_SECRET: change-me-to-at-least-32-characters
+      WHITE_LIST_URLS: http://localhost:3000,http://localhost:8081
+    depends_on:
+      postgres:
+        condition: service_healthy
+
 volumes:
   pairkit_pg:
