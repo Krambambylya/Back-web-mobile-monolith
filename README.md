@@ -20,9 +20,9 @@ pnpm dev:web
 pnpm dev:mobile
 ```
 
-`pnpm dev:backend` copies `backend/.env.dev` if missing, starts Postgres via Docker Compose,
-applies pending Prisma migrations, then runs the API. Migrations are additive: running them again
-does not wipe existing rows. Stop with Ctrl+C; Postgres keeps running until `docker compose down`.
+`pnpm dev:backend` copies `backend/.env.dev` if missing, starts Postgres via Docker Compose, applies
+pending Prisma migrations, then runs the API. Migrations are additive: running them again does not
+wipe existing rows. Stop with Ctrl+C; Postgres keeps running until `docker compose down`.
 
 API defaults to `http://localhost:4000`. Web defaults to `http://localhost:3000`.
 

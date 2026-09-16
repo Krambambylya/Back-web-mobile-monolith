@@ -1,3 +1,12 @@
 # Fail the push if types or unit tests break. Postgres HTTP specs skip when the DB is down.
+# Direct updates to main must go through a PR after CI is green.
+
+while read local_ref local_sha remote_ref remote_sha; do
+  if [ "$remote_ref" = "refs/heads/main" ]; then
+    echo "husky: refuse push to main. Open a pull request and merge after CI is green."
+    exit 1
+  fi
+done
+
 echo "husky: pnpm typecheck && pnpm test"
 pnpm typecheck && pnpm test
