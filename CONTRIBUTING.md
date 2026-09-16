@@ -14,17 +14,20 @@ token hashing.
 
 ## Checks
 
-| When           | What                                                                                  |
-| -------------- | ------------------------------------------------------------------------------------- |
-| Commit         | Husky `lint-staged`: Prettier on docs/config, ESLint+Prettier on staged package files |
-| Push           | Husky `pnpm typecheck && pnpm test`                                                   |
-| PR into `main` | Jobs `verify` and `secrets` must be green. A GitHub ruleset blocks direct pushes.     |
+| When           | What                                                                                                                                    |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Commit         | Husky `lint-staged`: Prettier on docs/config, ESLint+Prettier on staged package files                                                   |
+| Push           | Husky `pnpm typecheck && pnpm test`                                                                                                     |
+| PR into `main` | Jobs `verify` (typecheck, Expo doctor, tests, lint, format, builds) and `secrets` must be green. A GitHub ruleset blocks direct pushes. |
 
 Tests that need Postgres skip if Compose is not up; CI still runs the full suite including those
 HTTP specs. Lint, format, and builds stay in Actions, not in `git commit` or `pnpm build`.
 
 Work on a branch, open a PR, wait for `verify` and `secrets`, then merge. A solo maintainer can
 merge without a second reviewer; the required checks are CI, not a human approval.
+
+If this repo was created with **Use this template**, run `./scripts/protect-main.sh` once so `main`
+cannot be updated except through a green PR.
 
 ## Conventions
 

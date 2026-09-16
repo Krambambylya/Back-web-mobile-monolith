@@ -5,4 +5,5 @@ description = "Documented starter placeholders, not live secrets"
 paths = [
   '''(^|/)backend/\.env\.example$''',
   '''(^|/)\.github/workflows/ci\.yml$''',
+  '''(^|/)docker-compose\.yml$''',
 ]
