@@ -16,6 +16,7 @@ updates:
           - 'eslint-config-expo'
           - 'react-native'
           - 'react-native-*'
+          - '@react-native-*'
       vitest:
         patterns:
           - 'vitest'
@@ -35,6 +36,8 @@ updates:
           - 'version-update:semver-major'
           - 'version-update:semver-minor'
       - dependency-name: 'react-native-*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@react-native-*'
         update-types: ['version-update:semver-major']
       # Expo doctor requires typescript ~5.9.2
       - dependency-name: 'typescript'
