@@ -4,6 +4,10 @@ packages:
   - 'mobile'
   - 'backend'
 
+# pnpm 11 default (1 day). `pnpm install --frozen-lockfile` in CI rejects
+# lockfile entries younger than this. Keep Dependabot cooldown longer.
+minimumReleaseAge: 1440
+
 overrides:
   react: '19.2.0'
   react-dom: '19.2.0'

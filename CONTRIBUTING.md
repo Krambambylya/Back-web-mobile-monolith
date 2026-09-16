@@ -21,7 +21,9 @@ token hashing.
 | PR into `main` | Jobs `verify` (typecheck, Expo doctor, tests, lint, format, builds) and `secrets` must be green. A GitHub ruleset blocks direct pushes. |
 
 Tests that need Postgres skip if Compose is not up; CI still runs the full suite including those
-HTTP specs. Lint, format, and builds stay in Actions, not in `git commit` or `pnpm build`.
+HTTP specs. Lint, format, and builds stay in Actions, not in `git commit` or `pnpm build`. pnpm 11
+refuses lockfile entries younger than 24 hours (`minimumReleaseAge`); Dependabot waits 3 days before
+opening npm PRs so `verify` does not fail on a package that is merely too new.
 
 Work on a branch, open a PR, wait for `verify` and `secrets`, then merge. A solo maintainer can
 merge without a second reviewer; the required checks are CI, not a human approval.
