@@ -17,6 +17,7 @@ updates:
           - 'react-native'
           - 'react-native-*'
           - '@react-native-*'
+          - '@shopify/flash-list'
       vitest:
         patterns:
           - 'vitest'
@@ -35,9 +36,27 @@ updates:
         update-types:
           - 'version-update:semver-major'
           - 'version-update:semver-minor'
+      # Expo pins ~5.6.2 / ~4.23.0 — 5.6→5.9 is semver-minor and fails expo-doctor.
       - dependency-name: 'react-native-*'
-        update-types: ['version-update:semver-major']
+        update-types:
+          - 'version-update:semver-major'
+          - 'version-update:semver-minor'
       - dependency-name: '@react-native-*'
+        update-types:
+          - 'version-update:semver-major'
+          - 'version-update:semver-minor'
+      - dependency-name: '@shopify/flash-list'
+        update-types:
+          - 'version-update:semver-major'
+          - 'version-update:semver-minor'
+      # Workspace override + Expo SDK 55 are 19.2.0. 19.2→19.3 is semver-minor.
+      - dependency-name: 'react'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'react-dom'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: '@types/react'
+        update-types: ['version-update:semver-minor']
+      - dependency-name: 'eslint'
         update-types: ['version-update:semver-major']
       # Expo doctor requires typescript ~5.9.2
       - dependency-name: 'typescript'
